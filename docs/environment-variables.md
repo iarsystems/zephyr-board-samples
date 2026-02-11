@@ -4,19 +4,19 @@ There are a few environment variables that need to be set before the next steps:
 ```powershell
 # PowerShell
 $Env:ZEPHYR_TOOLCHAIN_VARIANT="iar"
-$Env:IAR_TOOLCHAIN_PATH=<your-toolchain-path-here>\arm
+$Env:IAR_TOOLCHAIN_PATH="<your-toolchain-path-here>\arm"
 $Env:IAR_LMS_BEARER_TOKEN="<your-license-bearer-token-here>"
 ```
 
 ```bash
 # Cmd
-set ZEPHYR_TOOLCHAIN_VARIANT="iar"
+set ZEPHYR_TOOLCHAIN_VARIANT=iar
 set IAR_TOOLCHAIN_PATH=<your-toolchain-path-here>\arm
-set IAR_LMS_BEARER_TOKEN="<your-license-bearer-token-here>"
+set IAR_LMS_BEARER_TOKEN=<your-license-bearer-token-here>
 ```
 
 ``ZEPHYR_TOOLCHAIN_VARIANT`` is used by Zephyr to set the compiler toolchain variant to use.
-In this case, it is set to ``"iar"`` in order for Zephyr to use IAR's compiler toolchain to compile applications.
+In this case, it is set to ``iar`` in order for Zephyr to use IAR's compiler toolchain to compile applications.
 
 ``IAR_TOOLCHAIN_PATH`` is used to set the path to the IAR compiler toolchain, which is needed for the next steps when compiling an initial build using Zephyr tools.
 There are two options for this, and depending on what you installed in the [previous guide](./embedded-workbench.md) you can choose at least option 1: 
