@@ -23,6 +23,11 @@ west build -b bbc_microbit -d <path-to-microbit-folder>/workbench/build <path-to
 west build -b frdm_mcxn947/mcxn947/cpu0 -d <path-to-frdm_mcxn947-folder>/workbench/build <path-to-frdm_mcxn947-folder>/blinky -p
 ```
 
+#### STM32F429II-ACA
+```bash
+west build -b stm32f429ii_aca -d <path-to-stm32f429ii_aca-folder>/test_leds/workbench/build <path-to-stm32f429ii_aca-folder>/test_leds/zephyr-project -p
+```
+
 Building with ``west`` is only necessary for the first build.
 Afterwards, for each modification to the program it can be compiled using EWARM.
 
