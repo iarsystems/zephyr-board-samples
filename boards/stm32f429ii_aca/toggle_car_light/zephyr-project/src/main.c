@@ -15,31 +15,6 @@ static struct gpio_dt_spec car_led = GPIO_DT_SPEC_GET_OR(DT_ALIAS(led3), gpios, 
 static struct gpio_dt_spec open_closed_switch = GPIO_DT_SPEC_GET_OR(DT_ALIAS(sw3), gpios, {0});
 
 void
-switch_toggled(const struct device *dev, struct gpio_callback *cb,
-		    uint32_t pins)
-{
-    int car_door_state;
-    interior_light_state_typedef interior_light_state;
-
-    interior_light_state = get_interior_light_state();
-
-    /* 0 if open, 1 if closed */
-    car_door_state = gpio_pin_get_dt(&open_closed_switch);
-
-    switch(interior_light_state) {
-        case ON_STATE:
-            gpio_pin_set_dt(&car_led, 1);
-        case AUTO_STATE:
-            if (car_door_state > 0)
-                gpio_pin_set_dt(&car_led, 1);
-            else
-                gpio_pin_set_dt(&car_led, 0);
-        case OFF_STATE:
-            gpio_pin_set_dt(&car_led, 0);
-    }
-}
-
-void
 configure_button(void)
 {
     int ret;
@@ -113,13 +88,16 @@ main(void)
         switch(interior_light_state) {
             case ON_STATE:
                 gpio_pin_set_dt(&car_led, 1);
+                break;
             case AUTO_STATE:
                 if (car_door_state > 0)
                     gpio_pin_set_dt(&car_led, 1);
                 else
                     gpio_pin_set_dt(&car_led, 0);
+                break;
             case OFF_STATE:
                 gpio_pin_set_dt(&car_led, 0);
+                break;
         }
 
         // k_msleep(SLEEP_TIME_MS);
