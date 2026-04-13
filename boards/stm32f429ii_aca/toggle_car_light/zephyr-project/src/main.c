@@ -47,8 +47,8 @@ configure_led(void)
     int ret;
     
     if (car_led.port && !gpio_is_ready_dt(&car_led)) {
-        printk("Error %d: LED device %s is not ready; ignoring it\n",
-            ret, car_led.port->name);
+        printk("Error: LED device %s is not ready; ignoring it\n",
+            car_led.port->name);
         car_led.port = NULL;
     }
 
