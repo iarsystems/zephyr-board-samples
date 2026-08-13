@@ -1,10 +1,7 @@
 ## About
-This repository serves as a reference for using the Zephyr RTOS together with tools made by IAR Systems.
-The repository contains Zephyr application samples for various boards combined with IAR tools integration, and related tutorials linked to in this README.
-
-### Board Samples Folder Structure
-Each board demo is located as a subfolder in the *``boards``* parent directory.
-Each board folder contains two subfolders, one for the Zephyr sample application, and one named *``workbench``* to be used with IAR tools.
+This repository serves as a reference for using the Zephyr RTOS together with tools made by IAR
+Systems. The repository contains Zephyr application samples for the STM32F429II-ACA board and
+instructions for how to create an Embedded Workbench project based on it.
 
 ## Guides
 > [!IMPORTANT]
@@ -18,10 +15,10 @@ Each board folder contains two subfolders, one for the Zephyr sample application
 > It is highly recommended to follow these guides as they are ordered below.
 >
 
-1. [Device Specifics](docs/device-specifics.md)
-2. [Zephyr Setup](docs/zephyr.md)
-3. [Embedded Workbench and IAR Tools Setup](docs/embedded-workbench.md)
-4. [Required Environment Variables](docs/environment-variables.md)
+1. [Zephyr Setup](docs/zephyr.md)
+2. [Embedded Workbench and IAR Tools Setup](docs/embedded-workbench.md)
+3. [Required Environment Variables](docs/environment-variables.md)
+4. [Initial build and creating project](docs/creating-project.md)
 5. [Compiling and Debugging with Embedded Workbench](docs/compiling-debugging.md)
 6. [Visual Studio Code Integration](docs/vscode-integration.md)
 
