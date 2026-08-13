@@ -4,8 +4,6 @@
 #include <zephyr/sys/util.h>
 #include <zephyr/sys/printk.h>
 
-#include <inttypes.h>
-
 #define SLEEP_TIME_MS        1
 #define BTN_PRESS_SLEEP_TIME 4000  /* Time between traffic change after pedestrian button press. */
 #define TRAFFIC_SWITCH_TIME  2000  /* Time it takes to switch between traffic light states */
@@ -22,10 +20,6 @@ static struct gpio_dt_spec car_traffic_leds[] = {
     GPIO_DT_SPEC_GET_OR(DT_ALIAS(led1), gpios, {0}), /* yellow */
     GPIO_DT_SPEC_GET_OR(DT_ALIAS(led2), gpios, {0}), /* green */
 };
-
-// static struct gpio_dt_spec car_traffic_red_led    = car_traffic_leds[0];
-// static struct gpio_dt_spec car_traffic_yellow_led = car_traffic_leds[1];
-// static struct gpio_dt_spec car_traffic_green_led  = car_traffic_leds[2];
 
 /* Aliases for car traffic light LEDs */
 static struct gpio_dt_spec car_traffic_red_led    = GPIO_DT_SPEC_GET_OR(DT_ALIAS(led0), gpios, {0});
@@ -87,18 +81,7 @@ change_traffic_situation(void)
 void button_pressed(const struct device *dev, struct gpio_callback *cb,
 		    uint32_t pins)
 {
-	// printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
-
-    // if (pins & BIT(pedestrian_button.pin)) {
-        // if (!traffic_state)
-        //     change_traffic_situation();
-    // }
-
-    printk("Pedestrian traffic button pressed.",
-                    "Changing traffic situation\n");
-    
-    // if (!traffic_state)
-    //     change_traffic_situation();
+    printk("Pedestrian traffic button pressed. Changing traffic situation\n");
 }
 
 void

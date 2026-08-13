@@ -17,7 +17,6 @@ configure_interior_light_switch(void)
     static struct gpio_callback switch_cb_data;
 
     for (i = 0; i < LEN(interior_light_switch); i++) {
-    // GPIO_ARRAY_LOOP(interior_light_switch, i) {
         if (!gpio_is_ready_dt(&interior_light_switch[i])) {
             printk("Error: button device %s is not ready\n",
                 interior_light_switch[i].port->name);
@@ -40,9 +39,6 @@ configure_interior_light_switch(void)
         }
         pin_mask_sum |= BIT(interior_light_switch[i].pin);
     }
-
-    // gpio_init_callback(&switch_cb_data, switch_toggled, pin_mask_sum);
-    // gpio_add_callback(interior_light_switch[0].port, &switch_cb_data);
 }
 
 interior_light_state_typedef
@@ -59,7 +55,7 @@ get_interior_light_state(void)
     else if (interior_light_auto_state) {
         return AUTO_STATE;
     }
-    else if (interior_light_off_state) {
+    else { // interior_light_off_state 
         return OFF_STATE;
     }
 }
